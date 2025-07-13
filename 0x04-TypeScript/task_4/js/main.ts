@@ -1,61 +1,33 @@
+/// <reference path="subjects/Teacher.ts" />
+/// <reference path="subjects/Cpp.ts" />
+/// <reference path="subjects/Java.ts" />
+/// <reference path="subjects/React.ts" />
+/// <reference path="subjects/Subject.ts" />
 
-interface Teacher {
-  readonly firstName: string;
-  readonly lastName: string;
-  fullTimeEmployee: boolean;
-  yearsOfExperience?: number;
-  location: string;
-  [propName: string]: any;
-}
+// Export constants
+export const cpp = new Subjects.Cpp();
+export const java = new Subjects.Java();
+export const react = new Subjects.React();
 
-interface Directors extends Teacher {
-  numberOfReports: number;
-}
-
-
-interface printTeacherFunction {
-  (firstName: string, lastName: string): string;
-}
-
-export const printTeacher: printTeacherFunction = (firstName, lastName) => {
-  return `${firstName[0]}. ${lastName}`;
+export const cTeacher: Subjects.Teacher = {
+    firstName: "Endy",
+    lastName: "Wire",
+    experienceTeachingC: 10
 };
+// c++
+console.log("C++");   // Output C++
+cpp.setTeacher(cTeacher);
+console.log(cpp.getRequirements());
+console.log(cpp.getAvailableTeacher());
 
+// java
+console.log("Java");     // Output Java
+java.setTeacher(cTeacher);
+console.log(java.getRequirements());
+console.log(java.getAvailableTeacher());
 
-interface StudentConstructor {
-  new (firstName: string, lastName: string): StudentClassInterface;
-}
-
-
-interface StudentClassInterface {
-  workOnHomework(): string;
-  displayName(): string;
-}
-
-
-export class StudentClass implements StudentClassInterface {
-  private firstName: string;
-  private lastName: string;
-
-  constructor(firstName: string, lastName: string) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-  }
-
-  workOnHomework(): string {
-    return 'Currently working';
-  }
-
-  displayName(): string {
-    return this.firstName;
-  }
-}
-
-
-export const createStudent = (
-  ctor: StudentConstructor,
-  firstName: string,
-  lastName: string
-): StudentClassInterface => {
-  return new ctor(firstName, lastName);
-};
+// react              // Output react
+console.log("React");
+react.setTeacher(cTeacher);
+console.log(react.getRequirements());
+console.log(react.getAvailableTeacher());
